@@ -1,0 +1,15 @@
+require "test_helper"
+
+class CreateMovieTest < ActionDispatch::IntegrationTest
+
+    edit app/models/mydb.rb and include
+    validates :name, presence: true
+    validates :genre, presence: true
+
+    test "No missing data, please" do
+        post mydb_url, params: { user: { name: "", etc​ }}
+        assert_not (200...299).include?(response.code.to_i)
+   end
+   That way, yo
+
+end
