@@ -1,0 +1,658 @@
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2023-12-16 22:35:43.883899', '2023-12-16 22:35:43.883902') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMovies (20231216223527)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "movies" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "genre" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20231216223527') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Create (0.5ms)[0m  [1m[32mINSERT INTO "movies" ("name", "genre", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Barbie"], ["genre", "Comedy"], ["created_at", "2023-12-16 22:42:39.383468"], ["updated_at", "2023-12-16 22:42:39.383468"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Create (0.4ms)[0m  [1m[32mINSERT INTO "movies" ("name", "genre", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "1917"], ["genre", "Action"], ["created_at", "2023-12-16 22:42:39.385272"], ["updated_at", "2023-12-16 22:42:39.385272"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMovie Create (0.4ms)[0m  [1m[32mINSERT INTO "movies" ("name", "genre", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "A New Hope"], ["genre", "Fantasy"], ["created_at", "2023-12-16 22:42:39.386360"], ["updated_at", "2023-12-16 22:42:39.386360"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/api/v1/actors" for ::1 at 2023-12-16 22:43:00 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/actors"):
+  
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 22:43:08 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 36ms (Views: 12.0ms | ActiveRecord: 1.4ms | Allocations: 18334)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 22:58:01 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 28ms (Views: 10.6ms | ActiveRecord: 1.5ms | Allocations: 19029)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 22:58:01 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 730)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:02:20 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 27ms (Views: 10.4ms | ActiveRecord: 1.5ms | Allocations: 19025)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:02:20 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 730)
+
+
+Started POST "/api/v1/movies" for ::1 at 2023-12-16 23:02:35 +0000
+Processing by Api::V1::MoviesController#create as HTML
+  Parameters: {"name"=>"Uncharted", "genre"=>"Action/Adventure", "movie"=>{"name"=>"Uncharted", "genre"=>"Action/Adventure"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+  [1m[36mMovie Create (0.6ms)[0m  [1m[32mINSERT INTO "movies" ("name", "genre", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Uncharted"], ["genre", "Action/Adventure"], ["created_at", "2023-12-16 23:02:35.466376"], ["updated_at", "2023-12-16 23:02:35.466376"]]
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.5ms | Allocations: 2286)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:02:35 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 790)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:02:35 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 802)
+
+
+Started DELETE "/api/v1/movies/2" for ::1 at 2023-12-16 23:02:38 +0000
+Processing by Api::V1::MoviesController#destroy as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+  [1m[36mMovie Destroy (0.5ms)[0m  [1m[31mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+Completed 204 No Content in 6ms (ActiveRecord: 0.6ms | Allocations: 2742)
+
+
+Started GET "/api/v1/movies/1" for ::1 at 2023-12-16 23:02:41 +0000
+Processing by Api::V1::MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 482)
+
+
+Started GET "/api/v1/movies/1" for ::1 at 2023-12-16 23:02:41 +0000
+Processing by Api::V1::MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 466)
+
+
+Started PUT "/api/v1/movies/1" for ::1 at 2023-12-16 23:02:46 +0000
+Processing by Api::V1::MoviesController#update as HTML
+  Parameters: {"name"=>"Barbie", "genre"=>"Comedy/Drama", "id"=>"1", "movie"=>{"name"=>"Barbie", "genre"=>"Comedy/Drama"}}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:23:in `update'
+  [1m[36mMovie Update (0.5ms)[0m  [1m[33mUPDATE "movies" SET "genre" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["genre", "Comedy/Drama"], ["updated_at", "2023-12-16 23:02:47.011709"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:23:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:23:in `update'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 2103)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:02:47 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:02:47 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies/1" for ::1 at 2023-12-16 23:02:49 +0000
+Processing by Api::V1::MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 467)
+
+
+Started GET "/api/v1/movies/1" for ::1 at 2023-12-16 23:02:49 +0000
+Processing by Api::V1::MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 466)
+
+
+Started PUT "/api/v1/movies/1" for ::1 at 2023-12-16 23:02:52 +0000
+Processing by Api::V1::MoviesController#update as HTML
+  Parameters: {"name"=>"Barbie", "genre"=>"Comedy", "id"=>"1", "movie"=>{"name"=>"Barbie", "genre"=>"Comedy"}}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:23:in `update'
+  [1m[36mMovie Update (0.5ms)[0m  [1m[33mUPDATE "movies" SET "genre" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["genre", "Comedy"], ["updated_at", "2023-12-16 23:02:52.215049"], ["id", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:23:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:23:in `update'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1947)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:02:52 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:02:52 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:26:43 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.9ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 1.4ms | Allocations: 1000)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:26:43 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:27:21 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:27:21 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:27:50 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 31ms (Views: 12.0ms | ActiveRecord: 1.5ms | Allocations: 19026)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:27:50 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 730)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:27:50 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:27:50 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies/1" for ::1 at 2023-12-16 23:27:54 +0000
+Processing by Api::V1::MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 1272)
+
+
+Started GET "/api/v1/movies/1" for ::1 at 2023-12-16 23:27:54 +0000
+Processing by Api::V1::MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 481)
+
+
+Started PUT "/api/v1/movies/1" for ::1 at 2023-12-16 23:27:56 +0000
+Processing by Api::V1::MoviesController#update as HTML
+  Parameters: {"name"=>"Barbie", "genre"=>"Comedy", "id"=>"1", "movie"=>{"name"=>"Barbie", "genre"=>"Comedy"}}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 968)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:27:56 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:27:56 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:29:27 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 739)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:29:27 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:31:25 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 28ms (Views: 10.8ms | ActiveRecord: 1.5ms | Allocations: 19026)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:31:25 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 730)
+
+
+Started POST "/api/v1/movies" for ::1 at 2023-12-16 23:32:37 +0000
+Processing by Api::V1::MoviesController#create as HTML
+  Parameters: {"name"=>"Test", "genre"=>"test", "movie"=>{"name"=>"Test", "genre"=>"test"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+  [1m[36mMovie Create (0.6ms)[0m  [1m[32mINSERT INTO "movies" ("name", "genre", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Test"], ["genre", "test"], ["created_at", "2023-12-16 23:32:37.885283"], ["updated_at", "2023-12-16 23:32:37.885283"]]
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 2285)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:32:37 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 790)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:32:37 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 802)
+
+
+Started GET "/api/v1/movies/1" for ::1 at 2023-12-16 23:33:26 +0000
+Processing by Api::V1::MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+Completed 200 OK in 25ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 3916)
+
+
+Started GET "/api/v1/movies/1" for ::1 at 2023-12-16 23:33:26 +0000
+Processing by Api::V1::MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 481)
+
+
+Started PUT "/api/v1/movies/1" for ::1 at 2023-12-16 23:33:29 +0000
+Processing by Api::V1::MoviesController#update as HTML
+  Parameters: {"name"=>"Barbie", "genre"=>"Comedy", "id"=>"1", "movie"=>{"name"=>"Barbie", "genre"=>"Comedy"}}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 665)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:33:29 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 790)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:33:29 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 790)
+
+
+Started DELETE "/api/v1/movies/5" for ::1 at 2023-12-16 23:33:30 +0000
+Processing by Api::V1::MoviesController#destroy as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+  [1m[36mMovie Destroy (0.6ms)[0m  [1m[31mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+Completed 204 No Content in 3ms (ActiveRecord: 0.8ms | Allocations: 1578)
+
+
+Started GET "/api/v1/movies/1" for ::1 at 2023-12-16 23:33:32 +0000
+Processing by Api::V1::MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 469)
+
+
+Started GET "/api/v1/movies/1" for ::1 at 2023-12-16 23:33:32 +0000
+Processing by Api::V1::MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 467)
+
+
+Started PUT "/api/v1/movies/1" for ::1 at 2023-12-16 23:33:33 +0000
+Processing by Api::V1::MoviesController#update as HTML
+  Parameters: {"name"=>"Barbie", "genre"=>"Comedy", "id"=>"1", "movie"=>{"name"=>"Barbie", "genre"=>"Comedy"}}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 588)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:33:33 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:33:33 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:35:48 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:35:48 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:39:41 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 727)
+
+
+Started POST "/api/v1/movies" for ::1 at 2023-12-16 23:39:51 +0000
+Processing by Api::V1::MoviesController#create as HTML
+  Parameters: {"name"=>"Aidan Smith", "genre"=>"test", "movie"=>{"name"=>"Aidan Smith", "genre"=>"test"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+  [1m[36mMovie Create (0.6ms)[0m  [1m[32mINSERT INTO "movies" ("name", "genre", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Aidan Smith"], ["genre", "test"], ["created_at", "2023-12-16 23:39:51.350236"], ["updated_at", "2023-12-16 23:39:51.350236"]]
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+Completed 201 Created in 2ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 1537)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:39:51 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 790)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-16 23:39:51 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 790)
+
+
+Started DELETE "/api/v1/movies/6" for ::1 at 2023-12-16 23:39:53 +0000
+Processing by Api::V1::MoviesController#destroy as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+  [1m[36mMovie Destroy (0.4ms)[0m  [1m[31mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+Completed 204 No Content in 2ms (ActiveRecord: 0.5ms | Allocations: 1473)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 00:01:42 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (1.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 1.6ms | Allocations: 999)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 00:01:42 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 00:03:43 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 00:03:44 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 00:07:37 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 29ms (Views: 11.2ms | ActiveRecord: 1.4ms | Allocations: 19026)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 00:07:37 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 730)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 00:09:18 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms | Allocations: 739)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 00:09:18 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 727)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 01:42:14 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.0ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 28ms (Views: 11.2ms | ActiveRecord: 1.7ms | Allocations: 19025)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 01:42:14 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 730)
+
+
+Started POST "/api/v1/movies" for ::1 at 2023-12-17 01:42:50 +0000
+Processing by Api::V1::MoviesController#create as HTML
+  Parameters: {"name"=>"Narnia", "genre"=>"Fantasy", "movie"=>{"name"=>"Narnia", "genre"=>"Fantasy"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+  [1m[36mMovie Create (0.6ms)[0m  [1m[32mINSERT INTO "movies" ("name", "genre", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "Narnia"], ["genre", "Fantasy"], ["created_at", "2023-12-17 01:42:50.115947"], ["updated_at", "2023-12-17 01:42:50.115947"]]
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+Completed 201 Created in 4ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 2286)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 01:42:50 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 790)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 01:42:50 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 802)
+
+
+Started DELETE "/api/v1/movies/7" for ::1 at 2023-12-17 01:42:58 +0000
+Processing by Api::V1::MoviesController#destroy as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+  [1m[36mMovie Destroy (0.4ms)[0m  [1m[31mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+Completed 204 No Content in 26ms (ActiveRecord: 0.6ms | Allocations: 5034)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 01:56:00 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.9ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 1.4ms | Allocations: 1012)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 01:56:00 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms | Allocations: 727)
+
+
+Started POST "/api/v1/movies" for ::1 at 2023-12-17 01:56:05 +0000
+Processing by Api::V1::MoviesController#create as HTML
+  Parameters: {"name"=>"test", "genre"=>"test", "movie"=>{"name"=>"test", "genre"=>"test"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+  [1m[36mMovie Create (1.2ms)[0m  [1m[32mINSERT INTO "movies" ("name", "genre", "created_at", "updated_at") VALUES (?, ?, ?, ?) RETURNING "id"[0m  [["name", "test"], ["genre", "test"], ["created_at", "2023-12-17 01:56:05.285281"], ["updated_at", "2023-12-17 01:56:05.285281"]]
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:15:in `create'
+Completed 201 Created in 6ms (Views: 0.4ms | ActiveRecord: 3.4ms | Allocations: 1533)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 01:56:05 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms | Allocations: 793)
+
+
+Started GET "/api/v1/movies" for ::1 at 2023-12-17 01:56:05 +0000
+Processing by Api::V1::MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies"[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.1ms | Allocations: 790)
+
+
+Started DELETE "/api/v1/movies/8" for ::1 at 2023-12-17 01:56:09 +0000
+Processing by Api::V1::MoviesController#destroy as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mMovie Load (0.1ms)[0m  [1m[34mSELECT "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/movies_controller.rb:38:in `set_movie'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+  [1m[36mMovie Destroy (0.5ms)[0m  [1m[31mDELETE FROM "movies" WHERE "movies"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/movies_controller.rb:31:in `destroy'
+Completed 204 No Content in 3ms (ActiveRecord: 0.7ms | Allocations: 1499)
+
+
